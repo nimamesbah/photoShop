@@ -1,0 +1,77 @@
+body{
+    margin:0;
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    
+}
+.toolBar{
+    border-right: solid black 2px;
+    padding-right: 3rem;
+    z-index: 9999;
+}
+input{
+    border-radius: 9999px;
+    background: none;
+    cursor: pointer;
+
+}
+.paint-section{
+    flex-grow: 1;
+    height: 100%;
+    
+    
+}
+#pen{
+    z-index: 1000;
+    position: relative;
+    background-color: rgb(255, 255, 255);
+}
+.shadow{
+    box-shadow: 1px 1px 1px 1px;
+}
+.delay{
+    transition: 0.5s;
+}
+.scale{
+    scale: 1.2;
+}
+.scale05{
+    scale: 0.5;
+}
+.scale08{
+    scale: 0.8;
+}
+.scale1{
+    scale: 1;
+}
+
+.penParent{
+    width: max-content;
+    padding-left: 10px;
+    cursor: pointer;
+}
+#penSize{
+    position: absolute;
+    top: -8px;
+    right: 141px;
+    cursor: pointer;
+}
+h3{
+    position: relative;
+    
+}
+.eraseAllBtn{
+    width: max-content;
+    border-radius: 9999px;
+    border: solid 2px black;
+    cursor: pointer;
+    height: max-content;
+    padding: 12px 10px;
+    
+}
+
+h4{
+    margin: 0;
+}

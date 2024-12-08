@@ -1,4 +1,5 @@
-const colorInput = document.querySelector("input")
+const colorInput = document.querySelector("#colorInput")
+const backgroundInput =document.querySelector("#backgroundInput")
 const paintSection= document.querySelector(".paint-section")
 const penSvg = document.querySelector("#pen")
 const penStroke =document.querySelector("#penColor")
@@ -49,6 +50,11 @@ function handlePenClick(evt) {
         
         
         
+    }
+    function backgroundColor(){
+        let inputValue=backgroundInput.value;
+        paintSection.style.backgroundColor=inputValue
+        console.log(inputValue)
     }
     function penColorChange(){
         penSvg.style=`background-color:${colorInput.value};`
