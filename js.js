@@ -4,6 +4,9 @@ const paintSection= document.querySelector(".paint-section")
 const penSvg = document.querySelector("#pen")
 const penStroke =document.querySelector("#penColor")
 const sizeSvg= document.querySelector("#penSize")
+const eraseSvg = document.querySelector("#eraser")
+const penParent= document.querySelector(".penParent")
+
 let count=0
 let sizeCount=-1
 const sizeArr=[{scale:0.5,size:4},{scale:0.8,size:8},{scale:1,size:12}]
@@ -55,7 +58,10 @@ function handlePenClick(evt) {
         let inputValue=backgroundInput.value;
         paintSection.style.backgroundColor=inputValue
         console.log(inputValue)
+        bgChangeP()
+
     }
+    backgroundColor()
     function penColorChange(){
         penSvg.style=`background-color:${colorInput.value};`
         document.getElementById("circle").setAttribute("fill", colorInput.value)
@@ -67,6 +73,7 @@ function handlePenClick(evt) {
         console.log( colorInput.value)
 
     }
+    penColorChange()
     function eraseAllHover(){
         let btn = document.querySelector(".eraseAllBtn")
         btn.style.backgroundColor=colorInput.value
@@ -78,12 +85,54 @@ function handlePenClick(evt) {
 
     }
     penColorChange()
-    function eraser(){
+    function eraser(evt){
+        let bg=backgroundInput.value
+        let eraseBox = document.createElement("p")
+        // eraseSvg.classList.toggle("scale")
+        if(count%2!==0){
+            handlePenClick()
+            counter()
+
+        }
         
+        eraseBox.style=`display:inline-block; position:absolute; top:${evt.clientY}px;left:${evt.clientX}px; background-color:${bg}; width:${sizeResult}px; height:${sizeResult}px; `
+        
+        paintSection.addEventListener("mousedown", () => paintSection.addEventListener("mousemove", eraser));
+    
+    
+        paintSection.addEventListener("mouseup", () => paintSection.removeEventListener("mousemove", eraser))
+        paintSection.appendChild(eraseBox)
+    
+        
+ 
+        paintSection.removeEventListener("mousedown",eraser)
+    
+        
+        paintSection.removeEventListener("mousedown",eraser)
+        
+
+    }
+    function bgChangeP(){
+        
+        
+        let bg=backgroundInput.value
+        let items=document.querySelectorAll("p")
+        for (const item of items) {
+            item.style.backgroundColor=bg
+
+        }
 
     }
     function eraseAll(){
         paintSection.innerHTML=""
+    }
+    function penFreez(){
+        penSvg.classList.add("disabled")
+        penParent.classList.add("disabled")
+    }
+    function penUnfreez(){
+        penSvg.classList.remove("disabled")
+        penParent.classList.remove("disabled")
     }
 
     

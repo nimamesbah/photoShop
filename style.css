@@ -75,3 +75,6 @@ h3{
 h4{
     margin: 0;
 }
+.disabled{
+    pointer-events: none;
+}
