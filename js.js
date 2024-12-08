@@ -53,15 +53,31 @@ function handlePenClick(evt) {
     function penColorChange(){
         penSvg.style=`background-color:${colorInput.value};`
         document.getElementById("circle").setAttribute("fill", colorInput.value)
+        document.getElementById("eraserColor").setAttribute("stroke",colorInput.value)
+        document.querySelector(".eraseAllBtn").style.borderColor=colorInput.value
         
         
         console.log( penStroke.stroke)
         console.log( colorInput.value)
 
     }
+    function eraseAllHover(){
+        let btn = document.querySelector(".eraseAllBtn")
+        btn.style.backgroundColor=colorInput.value
+        if(colorInput.value==="#000000")
+            btn.style.color="#ffffff"
+        if(colorInput.value==="#ffffff")
+            btn.style.borderColor="#000000"
+        btn.addEventListener("mouseout",()=> {btn.style.backgroundColor="transparent"; btn.style.color="#000000"})
+
+    }
     penColorChange()
     function eraser(){
         
+
+    }
+    function eraseAll(){
+        paintSection.innerHTML=""
     }
 
     
